@@ -19,6 +19,7 @@ def obloha(r,g,b):
 
 def sun(r,g,b):
     t.pencolor(r,g,b)
+    
     t.goto(-50,100)
     t.pendown()
     t.fillcolor(r,g,b)
@@ -35,6 +36,23 @@ def terrain():
         t.left(90)
         t.forward(50)
         t.right(90)
+
+    def strom():
+        t.fillcolor(1,0.5,1)
+        t.pencolor(1,0.5,1)
+        t.begin_fill()
+        t.left(90)
+        for i in range(3):
+            t.forward(100)
+            t.right(90)
+            t.forward(50)
+            t.right(90)
+        t.end_fill()
+        t.pencolor(0,1,0)
+        t.fillcolor(0,1,0)
+        t.right(90)
+
+
     
     def turn_down():
         t.right(90)
@@ -45,6 +63,8 @@ def terrain():
         turn_up()
     elif choice >= 66:
         turn_down()
+    elif choice > 50 and choice < 55:
+        strom()
     else:
         t.forward(50)
     print(choice)
