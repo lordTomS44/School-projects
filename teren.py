@@ -1,3 +1,4 @@
+
 import turtle as t
 import random as rnd
 
@@ -31,15 +32,20 @@ def sun(r,g,b):
     t.penup()
 
 def terrain():
-    choice = rnd.randint(0,100)
+    t.speed(3)
+    t.goto(-1000, -100)
+    t.pendown()
+    t.pencolor(0,1,0)
+    t.fillcolor(0,1,0)
+    t.begin_fill()
     def turn_up():
         t.left(90)
         t.forward(50)
         t.right(90)
 
     def strom():
-        t.fillcolor(1,0.5,1)
-        t.pencolor(1,0.5,1)
+        t.fillcolor(0.3,0,0)
+        t.pencolor(0.3,0,0)
         t.begin_fill()
         t.left(90)
         for i in range(3):
@@ -48,26 +54,54 @@ def terrain():
             t.forward(50)
             t.right(90)
         t.end_fill()
+        t.pencolor(0,0.5,0)
+        t.fillcolor(0,0.5,0)
+        t.begin_fill()
+        for i in range(2):
+            t.left(90)
+            t.forward(100)
+        t.left(90)
+        t.forward(50)
+        t.right(90)
+        t.forward(50)
+        t.left(90)
+        t.forward(150)
+        t.left(90)
+        t.forward(50)
+        t.right(90)
+        t.forward(50)
+        for i in range(2):
+            t.left(90)
+            t.forward(100)
+        t.end_fill()
+        t.penup()
+        t.right(90)
+        t.forward(100)
+        t.left(90)
+        t.forward(50)
         t.pencolor(0,1,0)
         t.fillcolor(0,1,0)
-        t.right(90)
+        t.pendown()
 
 
-    
     def turn_down():
         t.right(90)
         t.forward(50)
         t.left(90)
 
-    if choice <= 33:
-        turn_up()
-    elif choice >= 66:
-        turn_down()
-    elif choice > 50 and choice < 55:
-        strom()
-    else:
+    for i in range(35):
+        choice = rnd.randint(0,100)
+
+        if choice <= 33:
+            turn_up()
+        elif choice >= 66:
+            turn_down()
+        elif choice > 50 and choice < 55:
+            strom()
+        else:
+            t.forward(50)
         t.forward(50)
-    print(choice)
+        print(choice)
     
 def home(h1, h2):
     t.speed(0)
@@ -82,15 +116,7 @@ def home(h1, h2):
 
 obloha(0,1,1)
 sun(1,1,0)
-t.speed(3)
-t.goto(-1000, -100)
-t.pendown()
-t.pencolor(0,1,0)
-t.fillcolor(0,1,0)
-t.begin_fill()
-for i in range(35):
-    terrain()
-    t.forward(50)
+terrain()
 home(-1000,-100)
 t.end_fill()
 t.done()
