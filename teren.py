@@ -43,17 +43,35 @@ def terrain():
         t.forward(50)
         t.right(90)
 
+    def turn_down():
+        t.right(90)
+        t.forward(50)
+        t.left(90)
+
+
     def strom():
+        a = t.pos()
+        t.forward(50)
+        t.penup()
+        home(-1000,-1000)
+        t.end_fill()
+        t.left(180)
+        t.goto(a)
+        t.pendown()
         t.fillcolor(0.3,0,0)
         t.pencolor(0.3,0,0)
         t.begin_fill()
         t.left(90)
-        for i in range(3):
+        for i in range(2):
             t.forward(100)
             t.right(90)
             t.forward(50)
             t.right(90)
         t.end_fill()
+        t.forward(100)
+        t.right(90)
+        t.forward(50)
+        t.right(90)
         t.pencolor(0,0.5,0)
         t.fillcolor(0,0.5,0)
         t.begin_fill()
@@ -82,12 +100,7 @@ def terrain():
         t.pencolor(0,1,0)
         t.fillcolor(0,1,0)
         t.pendown()
-
-
-    def turn_down():
-        t.right(90)
-        t.forward(50)
-        t.left(90)
+        t.begin_fill()
 
     for i in range(35):
         choice = rnd.randint(0,100)
@@ -96,8 +109,9 @@ def terrain():
             turn_up()
         elif choice >= 66:
             turn_down()
-        elif choice > 50 and choice < 55:
+        elif choice > 40 and choice < 60:
             strom()
+            pass
         else:
             t.forward(50)
         t.forward(50)
@@ -117,6 +131,6 @@ def home(h1, h2):
 obloha(0,1,1)
 sun(1,1,0)
 terrain()
-home(-1000,-100)
+home(-1000,-1000)
 t.end_fill()
 t.done()
